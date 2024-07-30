@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Contact Form</title>
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <h2 class="Logo">People Service</h2>
+        <nav class="navigation">
+            <a href="index.html">Home</a>
+            <a href="form.html">Request for blood</a>
+            <a href="donar.html">Become a donor</a>
+            <a href="about.html">about</a>
+            <a href="contact.html">contact</a>
+        </nav>
+    </header>
+   <div class="container">
+    <form id="myForm" action="requestblood.php" method="POST">
+        <h3>Contact Information</h3>
+        <div class="form-group">
+            <label for="name">Name:</label>
+            <input type="text" id="name" name="name" required>
+        </div>
+        <div class="form-group">
+            <label for="mobile">Mobile Number:</label>
+            <input type="text" id="mobile" name="mobile" required>
+        </div>
+        <div class="form-group">
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email" required>
+        </div>
+        <div class="form-group">
+            <label for="blood-group">Blood Group:</label>
+            <input type="text" id="blood-group" name="bloodgroup">
+        </div>
+        <div class="form-group">
+            <label for="state">State:</label>
+            <input type="text" id="state" name="state">
+        </div>
+        <div class="form-group">
+            <label for="district">District:</label>
+            <input type="text" id="district" name="district">
+        </div>
+        <div class="form-group">
+            <label for="landmark">Landmark:</label>
+            <input type="text" id="landmark" name="landmark">
+        </div>
+        <div class="form-group">
+            <button type="submit">Submit</button>
+        </div>
+    </form>
+   </div>
+   <!-- <script src="form_validation.js"></script> -->
+</body>
+</html>
