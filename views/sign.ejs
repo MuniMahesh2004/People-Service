@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="reg.css">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <style>
+        .error-and-forgot {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 5px; /* Move 5px down from submit button */
+        }
+        #pw {
+            color: white;
+        }
+        .forgot-password {
+            color: rgb(245, 241, 241);
+        }
+    </style>
+</head>
+<body id="body">
+    <header>
+        <h2 class="Logo">People Service</h2>
+        <nav class="navigation" id="nav">
+             <a href="index.html">Home</a>
+             <a href="/register" id="myLink" >SignUp</a>
+             <a href="/sign">SignIn</a>
+             <a href="https://www.who.int/campaigns/world-blood-donor-day/2018/who-can-give-blood">eligibility?</a>
+             <a href="contact.html">contact</a>
+         </nav>
+         <i class='bx bx-menu' id="menu" onclick="myfun()"></i>
+         <i class="fa-solid fa-xmark" id="men" onclick="myfun()"></i>
+     </header>
+    <div class="sign" id="re">
+        <h3 style="color: white; text-align:center">Log In to Your Account </h3>
+        <form onsubmit="handleRegister(event)">
+            <i class='bx bx-user' class="image" style="color: aliceblue;"></i>
+            <input type="email" id="email" name="email" placeholder="Enter Email" required><br><br>
+            <i class='bx bx-lock-alt' class="image" style="color: aliceblue;"></i>
+            <input type="password" id="password" name="password" placeholder="Enter Password" required><br>
+            <button>Sign-In</button><br>
+            <!-- Error message and forgot password on the same line -->
+        </form>
+        <div class="error-and-forgot" style="margin-top: 10px;">
+            <span id="pw" style="font-size: 14px;"></span>
+            <a href="/forget-password" class="forgot-password" style="font-size: 14px;">Forgot password?</a>
+        </div>
+    </div>
+</body>
+<script>
+    function myfun(){
+        document.getElementById("menu").classList.toggle("menu");
+        document.getElementById("men").classList.toggle("men");
+        document.getElementById("nav").classList.toggle("show");
+        document.getElementById("body").classList.toggle("body");
+        document.getElementById("re").classList.toggle("re");
+    }
+    // Client-side validation and fetch POST request
+    async function handleRegister(event) {
+        event.preventDefault(); // Prevent form from submitting the default way
+    
+        // Grab the form data
+        const email = document.getElementById('email').value;
+        const password = document.getElementById('password').value;
+    
+        // If validation passes, make the POST request to your Node.js backend
+        try {
+            const response = await fetch('/sign', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({ email, password })
+            });
+            
+            const result = await response.json();
+    
+            if (response.ok) {
+                window.location.href = '/home'; // Redirect to home after successful sign-in
+            } else {
+                // Handle specific error messages from the server
+                if (result.message === "em") {
+                    document.getElementById("pw").innerHTML = "User not found!";
+                } else if (result.message === "pw") {
+                    document.getElementById("pw").innerHTML = "Password incorrect!";
+                } else {
+                    alert(result.message || 'Sign-in failed.');
+                }
+            }
+        } catch (error) {
+            console.error('Error during sign-in:', error);
+            alert('An error occurred. Please try again.');
+        }
+    }    
+</script>
+</html>

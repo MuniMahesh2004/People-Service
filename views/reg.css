@@ -1,0 +1,224 @@
+.reg {
+    text-align: center;
+    border: 1px solid black;
+    height: 360px; /* Increased height */
+    width: 320px;  /* Increased width */
+    padding: 25px;
+    border-radius: 15px;
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(242, 244, 246, 0.1);
+    box-shadow: 0 0 5px rgba(245, 244, 248, 0.6);
+    position: relative;
+    font-size: 18px; /* Increased font size */
+}
+input {
+    width: 100%;
+    box-sizing: border-box; /* Corrected box-sizing */
+    padding: 10px; /* Increased padding */
+    padding-right: 40px; /* Add space for the icon */
+    display: inline-block;
+    background: none;
+    border: 3px solid rgba(251, 252, 253, 0.1);
+    box-shadow: 0px 0px 3px white;
+    border-radius: 5px;
+    font-size: 16px; /* Increased font size */
+    color: white;
+}
+
+.reg i,.sign i , .forget i {
+    position: absolute;
+    right: 35px;
+    margin-top: 12px;
+    pointer-events: none; /* Ensure the icon is not interactive */
+}
+
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background: url(h.png);
+    background-size: cover;
+    background-position: center;
+}
+
+::placeholder {
+    color: #dccece;
+}
+.donar button , .filter button{
+    background: white;
+}
+.button {
+    cursor: pointer;
+    width: 100px; /* Increased width */
+    font-size: 16px; /* Increased font size */
+}
+.sign{
+    /* text-align: center; */
+    border: 1px solid rgb(7, 7, 7);
+    height: 225px; /* Increased height */
+    width: 320px;  /* Increased width */
+    padding: 25px;
+    border-radius: 10px;
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(242, 244, 246, 0.1);
+    box-shadow: 0 0 5px rgba(245, 244, 248, 0.6);
+    /* position: relative; */
+    font-size: 15px; /* Increased font size */
+}
+.sign button ,.reg button, .donar button , .filter button ,.forget button,.contact button{
+    background: none;
+    border: 2px solid rgba(255, 255, 255, 0.1);
+    box-shadow: 0 0 40px rgba(8, 7, 16,0.6);
+    border-radius: 5px;
+    font-size: 16px; /* Increased font size */
+    cursor: pointer;
+}
+.reg button , .contact button {
+    background-color: white;
+}
+.sign button{
+    background-color: white; 
+    margin-top:20px;
+}
+.contact{
+        text-align: center;
+        border: 1px solid rgb(7, 7, 7);
+        height: 320px; /* Increased height */
+        width: 320px;  /* Increased width */
+        padding: 25px;
+        border-radius: 10px;
+        backdrop-filter: blur(10px);
+        border: 1px solid rgba(242, 244, 246, 0.1);
+        box-shadow: 0 0 5px rgba(245, 244, 248, 0.6);
+        /* position: relative; */
+        font-size: 15px; /* Increased font size */
+}
+.contact textarea{
+    box-sizing: border-box; /* Corrected box-sizing */
+    padding: 10px; /* Increased padding */
+    display: inline-block;
+    background: none;
+    border: 3px solid rgba(251, 252, 253, 0.1);
+    box-shadow: 0px 0px 3px white;
+    border-radius: 5px;
+    font-size: 16px; /* Increased font size */
+    color: white;
+    width: 100%;
+    height: 90px;
+}
+.donar{
+    text-align: center;
+    border: 1px solid black;
+    height: 450px; /* Increased height */
+    width: 333px;  /* Increased width */
+    padding: 20px;
+    border-radius: 15px;
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(242, 244, 246, 0.1);
+    box-shadow: 0 0 5px rgba(245, 244, 248, 0.6);
+    position: relative;
+    font-size: 18px; /* Increased font size */
+    overflow: auto;
+    scrollbar-width: thin; /* For Firefox */
+    scrollbar-color: #f6f5f5 #171717; /* For Firefox */
+}
+.donar p {
+    text-align: left;
+}
+.donar button{
+    margin-top: 10px;
+}
+.reg button:hover , .sign button:hover {
+    background-color: white;
+}
+.filter select , .donar select {
+    box-sizing: border-box; /* Corrected box-sizing */
+    padding: 10px; /* Increased padding */
+    display: inline-block;
+    background: none;
+    border: 3px solid rgba(251, 252, 253, 0.1);
+    box-shadow:  0px 0px 3px white;
+    border-radius: 5px;
+    font-size: 16px; 
+    color: white;
+}
+.donar select{
+    width: 100%;
+}
+.filter {
+    word-spacing: 10px;
+}
+option{
+    color: black;
+}
+.filter {
+    text-align: center;
+    border: 1px solid black;
+    height: 525px; /* Increased height */
+    width: 920px;  /* Increased width */
+    padding: 25px;
+    border-radius: 15px;
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(242, 244, 246, 0.1);
+    box-shadow: 0 0 5px rgba(245, 244, 248, 0.6);
+    position: relative;
+    font-size: 18px; /* Increased font size */
+}
+table {
+   /* Make table full width */
+   
+   max-width: 1000%;
+    max-width: 800px; /* Set a maximum width for the table */
+    margin: 20px auto; /* Center the table */
+    border-collapse: collapse; /* Collapse borders for a clean look */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Add a subtle shadow for a modern look */
+}
+
+.tab {
+    height: 300px; /* Set height for the container */
+    overflow-x: auto;
+    overflow-y: auto; /* Enable vertical scrolling */
+    scrollbar-width: thin; /* For Firefox, makes the scrollbar thin */
+    scrollbar-color: #f6f5f5 #171717; /* Custom scrollbar colors for Firefox */
+    color: white;
+}
+
+.tab th, .tab td {
+    width: 150px; /* Reasonable width for each table cell */
+    height: 40px; /* Reasonable height for each table cell */
+    padding: 10px; /* Add padding inside cells */
+    text-align: center; /* Align text to the left */
+    border: 1px solid rgb(194, 182, 182); /* Add a border to cells */
+}
+
+p{
+    margin-top: 15px;
+    margin-bottom: 15px;
+    color: white;
+}
+
+.filter button , .donar button{
+    background: white;
+}
+
+.forget{
+    text-align: center;
+    border: 1px solid rgb(7, 7, 7);
+    height: 180px; /* Increased height */
+    width: 300px;  /* Increased width */
+    padding: 25px;
+    border-radius: 10px;
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(242, 244, 246, 0.1);
+    box-shadow: 0 0 5px rgba(245, 244, 248, 0.6);
+    /* position: relative; */
+    font-size: 15px; /* Increased font size */
+}
+.forget button{
+    background-color: white;
+    margin-top: 10px;
+}
+.sign {
+    text-align: center;
+}

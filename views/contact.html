@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="reg.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+</head>
+<body id="body">
+    <header>
+        <h2 class="Logo">People Service</h2>
+        <nav class="navigation" id="nav">
+            <a href="index.html">Home</a>
+            <a href="/register" id="myLink" >SignUp</a>
+            <a href="/sign">SignIn</a>
+            <a href="https://www.who.int/campaigns/world-blood-donor-day/2018/who-can-give-blood">eligibility?</a>
+            <a href="contact.html">contact</a>
+        </nav>
+        <i class='bx bx-menu' id="menu" onclick="myfun()"></i>
+        <i class="fa-solid fa-xmark" id="men" onclick="myfun()"></i>
+    </header>
+
+    <div class="contact" id="re">
+        <h3 style="color: rgb(239, 233, 234);">Feedback</h3>
+        <form onsubmit="redirectToGmail(); return false;">
+            <input type="text" name="name" id="name" placeholder="Enter name"><br><br>
+            <input type="email" name="email" id="email" placeholder="Enter email"><br><br>
+            <textarea name="message" id="message" placeholder="Enter message"></textarea><br><br>
+            <button type="submit">Submit</button>
+        </form>            
+    </div>
+
+    <script>
+        function myfun(){
+            document.getElementById("menu").classList.toggle("menu");
+            document.getElementById("men").classList.toggle("men");
+            document.getElementById("nav").classList.toggle("show");
+            document.getElementById("body").classList.toggle("body");
+            document.getElementById("re").classList.toggle("re");
+            document.getElementById("h").classList.toggle("h");
+        }
+
+        function redirectToGmail() {
+            
+            var name = document.getElementById('name').value;
+            var email = document.getElementById('email').value;
+            var message = document.getElementById('message').value;
+
+            if (name && email && message) {
+                var enname = encodeURIComponent(name) ;
+                var enemail = encodeURIComponent(email) ;
+                var enmsg = encodeURIComponent(message) ;
+                var mailtoLink = `mailto:narasimhas9490@gmail.com?subject=${enname}&body=${enmsg}`;
+             
+                window.location.href = mailtoLink;
+            } else {
+                alert('Please fill out all fields.');
+            }
+        }
+    </script>
+</body>
+</html>

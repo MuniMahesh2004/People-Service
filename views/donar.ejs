@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+     <link rel="stylesheet" href="reg.css">
+     <link rel="stylesheet" href="style.css">
+     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+     <style>
+        p{
+            font-size: 14px;
+        }
+     </style>
+</head>
+<body id="body">
+    <header>
+        <h2 class="Logo">People Service</h2>
+        <nav class="navigation" id="nav">
+            <a href="/home">Home</a>
+            <a href="/donar">Become a donor</a>
+            <a href="/receiver">Become a receiver</a>
+            <a href="/signout">Log out</a>
+        </nav>
+        <i class='bx bx-menu' id="menu" onclick="myfun()"></i>
+        <i class="fa-solid fa-xmark" id="men" onclick="myfun()"></i>
+    </header>
+    <div class="donar" id="re">
+        <h3 style="color: white; text-align:center">Donor Contact Information</h3>
+        <form onsubmit="handleDonorForm(event)">
+            <input type="text" id="name" name="name" placeholder="Name" required><br>
+            <p id="name-error" class="error-message"></p>
+            <input type="text" id="phone" name="phone" placeholder="Mobile Number" required>
+            <p id="phone-error" class="error-message"></p>
+            
+            <input type="email" id="email" name="email" placeholder="Email" required>
+            <p id="email-error" class="error-message"></p>
+            
+            <input type="number" id="age" name="age" placeholder="Age">
+            <p id="age-error" class="error-message"></p>
+            <input type="text" id="bloodgroup" name="bloodgroup" placeholder="Blood Group">
+            <p id="bloodgroup-error" class="error-message"></p>
+            
+            <input type="number" id="weight" name="weight" placeholder="Weight (in kg)">
+            <p id="weight-error" class="error-message"></p>
+            
+            <select id="state" onchange="updateCities()" name="state">
+                <option value="">--Select State--</option>
+                <option value="AP">Andhra Pradesh</option>
+                <option value="TS">Telangana</option>
+            </select><br>
+            <p id="state-error" class="error-message"></p>
+            
+            <select id="city" name="city">
+                <option value="">--Select City--</option>
+            </select><br>
+            <p id="city-error" class="error-message"></p>
+            
+            <button type="submit" style="margin-top: 15px;">Submit</button>
+        </form>
+    </div>
+
+    <script>
+        function myfun(){
+            document.getElementById("menu").classList.toggle("menu");
+            document.getElementById("men").classList.toggle("men");
+            document.getElementById("nav").classList.toggle("show");
+            document.getElementById("body").classList.toggle("body");
+            document.getElementById("re").classList.toggle("re");
+        }
+        function updateCities() {
+            var state = document.getElementById("state").value;
+            var cities = document.getElementById("city");
+            cities.innerHTML = '';
+            var cityOptions = {
+                'AP': ['Visakhapatnam', 'Vijayawada', 'Guntur', 'Nellore', 'Kurnool', 'Tirupati', 'Rajahmundry', 'Kakinada', 'Eluru', 'Ongole', 'Anantapur', 'Kadapa', 'Srikakulam', 'Vizianagaram', 'Chittoor'],
+                'TS': ['Hyderabad', 'Warangal', 'Nizamabad', 'Karimnagar', 'Khammam', 'Mahbubnagar', 'Ramagundam', 'Nalgonda', 'Adilabad', 'Suryapet', 'Miryalaguda', 'Jagtial', 'Mancherial', 'Siddipet', 'Zaheerabad']
+            };
+
+            if (state in cityOptions) {
+                cityOptions[state].forEach(function(city) {
+                    var option = document.createElement('option');
+                    option.text = city;
+                    option.value = city;
+                    cities.add(option);
+                });
+            }
+        }
+
+        async function handleDonorForm(event) {
+            event.preventDefault();
+
+            clearErrors();  // Clear previous error messages
+
+            const name = document.getElementById('name').value;
+            const phone = document.getElementById('phone').value;
+            const email = document.getElementById('email').value;
+            const age = parseInt(document.getElementById('age').value);
+            const bloodgroup = document.getElementById('bloodgroup').value;
+            const weight = parseInt(document.getElementById('weight').value);
+            const state = document.getElementById('state').value;
+            const city = document.getElementById('city').value;
+
+            let hasError = false;
+
+            // Validate age
+            if (age < 18 || age > 65) {
+                displayError('age-error', "Age must be between 18 and 65.");
+                hasError = true;
+            }
+
+            // Validate weight
+            if (weight < 45) {
+                displayError('weight-error', "Weight must be at least 45 kg.");
+                hasError = true;
+            }
+
+            // Validate phone number
+            const phonePattern = /^\d{10}$/;
+            if (!phonePattern.test(phone)) {
+                displayError('phone-error', "Enter a valid mobile number.");
+                hasError = true;
+            }
+
+            // Validate blood group
+            const validBloodGroups = ["A+", "A-", "B+", "B-", "AB+", "AB-", "O+", "O-"];
+            if (!validBloodGroups.includes(bloodgroup.toUpperCase())) {
+                displayError('bloodgroup-error', "Invalid blood group.");
+                hasError = true;
+            }
+
+            if (hasError) return;  // If there's any error, stop form submission
+
+            try {
+                const response = await fetch('/donar', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ name, phone, email, age, bloodgroup, weight, state, city })
+                });
+
+                const result = await response.json();
+
+                if (response.ok) {
+                    alert('Donor information submitted successfully!');
+                    window.location.href = '/donar';
+                } else {
+                    displayError('form-error', result.error || 'Failed to submit donor information.');
+                }
+            } catch (error) {
+                console.error('Error during submission:', error);
+                displayError('form-error', 'An error occurred. Please try again.');
+            }
+        }
+
+        function displayError(elementId, message) {
+            document.getElementById(elementId).innerText = message;
+        }
+
+        function clearErrors() {
+            document.querySelectorAll('.error-message').forEach(el => el.innerText = '');
+        }
+    </script>
+</body>
+</html>

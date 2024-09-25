@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="reg.css">
+    <link rel="stylesheet" href="style.css">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body id="body" onload="noBack();" >
+    <header>
+        <h2 class="Logo">People Service</h2>
+        <nav class="navigation" id="nav">
+            <a href="/home">Home</a>
+            <a href="/donar">Become a donor</a>
+            <a href="/receiver">Become a receiver</a>
+            <a href="/signout">Log out</a>
+        </nav>
+        <i class='bx bx-menu' id="menu" onclick="myfun()"></i>
+        <i class="fa-solid fa-xmark" id="men" onclick="myfun()"></i>
+    </header>
+    <h1 id="h">Welcome, <%= username %>!</h1>
+</body>
+<script>
+    function myfun(){
+        document.getElementById("menu").classList.toggle("menu");
+        document.getElementById("men").classList.toggle("men");
+        document.getElementById("nav").classList.toggle("show");
+        document.getElementById("body").classList.toggle("body");
+        document.getElementById("h").classList.toggle("h");
+    }
+</script>
+</html>

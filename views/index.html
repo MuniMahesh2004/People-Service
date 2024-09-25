@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+     <link rel="stylesheet" href="style.css">
+     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+</head>
+<body id="body">
+    <header>
+        <h2 class="Logo">People Service</h2>
+        <nav class="navigation" id="nav">
+             <a href="index.html">Home</a>
+             <a href="/register" id="myLink" >SignUp</a>
+             <a href="/sign">SignIn</a>
+             <a href="https://www.who.int/campaigns/world-blood-donor-day/2018/who-can-give-blood">eligibility?</a>
+             <a href="contact.html">contact</a>
+         </nav>
+         <i class='bx bx-menu' id="menu" onclick="myfun()"></i>
+        <i class="fa-solid fa-xmark" id="men" onclick="myfun()"></i>
+     </header>
+    
+        <!-- <i class='bx bx-window-close' id="close" style="color: white; font-size:25px;" ></i> -->
+        
+        
+        
+    <h1 id="h">Welcome to People Service <br>Connecting Lives Through <span style="color: rgb(255,49,49,255);">Blood Donation</span> </h1>
+    </body>
+    <script>
+        function myfun(){
+            document.getElementById("menu").classList.toggle("menu");
+            document.getElementById("men").classList.toggle("men");
+            document.getElementById("nav").classList.toggle("show");
+            document.getElementById("body").classList.toggle("body");
+            document.getElementById("h").classList.toggle("h");
+        }
+    </script>
+</html>
