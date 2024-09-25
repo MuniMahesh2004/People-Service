@@ -153,10 +153,11 @@ option{
     color: black;
 }
 .filter {
+    margin-top: 20px !important;
     text-align: center;
     border: 1px solid black;
-    height: 525px; /* Increased height */
-    width: 920px;  /* Increased width */
+    height: 70vh; /* Increased height */
+    width: 70vw;  /* Increased width */
     padding: 25px;
     border-radius: 15px;
     backdrop-filter: blur(10px);
