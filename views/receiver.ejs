@@ -23,7 +23,8 @@
     </header>
 
     <div class="filter" id="re">
-        <h3 style="color: rgb(239, 233, 234);">Filter by State, City, and Blood Group</h3>
+        <div class="filter-content">
+            <h3 style="color: rgb(239, 233, 234);">Filter by State, City, and Blood Group</h3>
         
         <!-- Form for filtering donors -->
         <form id="filterForm" onsubmit="filterDonors(event)">
@@ -77,7 +78,8 @@
             </table>
         </div>
         <div id="error-message" style="color: red; display: none;">An error occurred while fetching donors. Please try again.</div>
-    </div>
+        </div>
+        </div>
 
     <script>
         // Prevent form submission from reloading the page

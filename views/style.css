@@ -189,9 +189,6 @@ body{
     .filter  {
      font-size: 13px;
     }
-    .filter .tab{
-        overflow: auto;
-    }
     .filter h3{
         font-size: 15px !important;
     }

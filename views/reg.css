@@ -158,33 +158,50 @@ option{
     border: 1px solid black;
     height: 70vh; /* Increased height */
     width: 70vw;  /* Increased width */
-    padding: 25px;
+    padding: 25px 10px 25px 25px;
     border-radius: 15px;
     backdrop-filter: blur(10px);
     border: 1px solid rgba(242, 244, 246, 0.1);
     box-shadow: 0 0 5px rgba(245, 244, 248, 0.6);
     position: relative;
     font-size: 18px; /* Increased font size */
+    overflow: hidden;
 }
+.filter-content {
+    max-height: 100%;
+    overflow-y: auto; /* Enable scrolling inside */
+    padding-right: 20px; 
+  }  
 table {
    /* Make table full width */
-   
-   max-width: 1000%;
-    max-width: 800px; /* Set a maximum width for the table */
+    max-width: 100%;/* Set a maximum width for the table */
     margin: 20px auto; /* Center the table */
     border-collapse: collapse; /* Collapse borders for a clean look */
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Add a subtle shadow for a modern look */
 }
 
 .tab {
-    height: 300px; /* Set height for the container */
-    overflow-x: auto;
-    overflow-y: auto; /* Enable vertical scrolling */
-    scrollbar-width: thin; /* For Firefox, makes the scrollbar thin */
-    scrollbar-color: #f6f5f5 #171717; /* Custom scrollbar colors for Firefox */
+    /* height: 300px; Set height for the container */
+    overflow-x: auto;/* Enable vertical scrolling */
+    /* Custom scrollbar colors for Firefox */
     color: white;
 }
+.filter-content::-webkit-scrollbar,.tab::-webkit-scrollbar{
+    width: 0.3rem;
+    height: 0.3rem;
+}
+.filter-content::-webkit-scrollbar{
+    margin-left: 50px;
+}
+.filter-content::-webkit-scrollbar-thumb , .tab::-webkit-scrollbar-thumb{
+    border-radius: .7rem;
+    background-color: rgba(255, 255, 255, 0.267);
+    visibility: hidden;
+}
 
+.filter-content::-webkit-scrollbar-thumb,.tab:hover::-webkit-scrollbar-thumb{ 
+    visibility: visible;
+}
 .tab th, .tab td {
     width: 150px; /* Reasonable width for each table cell */
     height: 40px; /* Reasonable height for each table cell */
