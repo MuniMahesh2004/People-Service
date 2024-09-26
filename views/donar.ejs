@@ -27,15 +27,16 @@
         <i class="fa-solid fa-xmark" id="men" onclick="myfun()"></i>
     </header>
     <div class="donar" id="re">
+       <div class="donar-content">
         <h3 style="color: white; text-align:center">Donor Contact Information</h3>
         <form onsubmit="handleDonorForm(event)">
             <input type="text" id="name" name="name" placeholder="Name" required><br>
             <p id="name-error" class="error-message"></p>
             <input type="text" id="phone" name="phone" placeholder="Mobile Number" required>
-            <p id="phone-error" class="error-message"></p>
+            <p id="phone-error" class="error-message" ></p>
             
             <input type="email" id="email" name="email" placeholder="Email" required>
-            <p id="email-error" class="error-message"></p>
+            <p id="email-error" class="error-message" ></p>
             
             <input type="number" id="age" name="age" placeholder="Age">
             <p id="age-error" class="error-message"></p>
@@ -59,6 +60,7 @@
             
             <button type="submit" style="margin-top: 15px;">Submit</button>
         </form>
+       </div>
     </div>
 
     <script>
@@ -140,11 +142,21 @@
                 });
 
                 const result = await response.json();
-
+                if(result.message.includes("email & phone")){
+                    document.getElementById('email-error').innerHTML = 'email already exists!';
+                    document.getElementById('phone-error').innerHTML = 'phone number already exists!';
+                }
+                else if (result.message === 'email already exists!') {
+                    document.getElementById('email-error').innerHTML = 'email already exists!';
+                } 
+                else if (result.message === 'phone number already exists!') {
+                    document.getElementById('phone-error').innerHTML = 'phone number already exists!';
+                } 
                 if (response.ok) {
                     alert('Donor information submitted successfully!');
                     window.location.href = '/donar';
-                } else {
+                } 
+                else {
                     displayError('form-error', result.error || 'Failed to submit donor information.');
                 }
             } catch (error) {

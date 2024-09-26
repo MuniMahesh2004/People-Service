@@ -314,6 +314,22 @@ app.get('/donar', (req, res) => {
 //POST FOR DONAR
 app.post('/donar', async (req, res) => {
     try {
+        const { email, phone} = req.body;
+        // Check if the user already exists
+        const user = await Donar.findOne({ email });
+        
+       
+        const ph = await Donar.findOne({ phone });
+        if(user && ph){
+            return res.status(400).json({ message: 'email & phone already exists!' });
+
+        }
+        else if (user) {
+            return res.status(400).json({ message: 'email already exists!' });
+        }
+       else if (ph) {
+            return res.status(400).json({ message: 'phone number already exists!' });
+        }
         await saveDetails(req); // Call async saveUser function
         return res.status(200).json({ message: 'User registered successfully' });
     } catch (error) {

@@ -15,7 +15,6 @@ input {
     width: 100%;
     box-sizing: border-box; /* Corrected box-sizing */
     padding: 10px; /* Increased padding */
-    padding-right: 40px; /* Add space for the icon */
     display: inline-block;
     background: none;
     border: 3px solid rgba(251, 252, 253, 0.1);
@@ -24,7 +23,9 @@ input {
     font-size: 16px; /* Increased font size */
     color: white;
 }
-
+.reg input , .sign input {
+    padding-right: 40px; /* Add space for the icon */
+}
 .reg i,.sign i , .forget i {
     position: absolute;
     right: 35px;
@@ -110,19 +111,34 @@ body {
 .donar{
     text-align: center;
     border: 1px solid black;
-    height: 450px; /* Increased height */
+    height: 70vh; /* Increased height */
     width: 333px;  /* Increased width */
-    padding: 20px;
+    padding: 20px 5px 20px 20px;
     border-radius: 15px;
     backdrop-filter: blur(10px);
     border: 1px solid rgba(242, 244, 246, 0.1);
     box-shadow: 0 0 5px rgba(245, 244, 248, 0.6);
     position: relative;
     font-size: 18px; /* Increased font size */
-    overflow: auto;
-    scrollbar-width: thin; /* For Firefox */
-    scrollbar-color: #f6f5f5 #171717; /* For Firefox */
+    overflow: hidden;
+    /* overflow-y: auto; */
+    /* scrollbar-color: #f6f5f5 #171717; For Firefox */
 }
+.donar-content{
+    max-height: 100%;
+    overflow-y: auto; /* Enable scrolling inside */
+    padding-right: 20px;
+}
+.donar-content::-webkit-scrollbar {
+    width: 5px; /* Adjust width if needed */
+}
+
+
+.donar-content::-webkit-scrollbar-thumb {
+    background-color: #f6f5f5; /* Color of the scrollbar thumb */
+    border-radius: 10px; /* Rounded scrollbar thumb */
+}
+
 .donar p {
     text-align: left;
 }
@@ -186,16 +202,16 @@ table {
     /* Custom scrollbar colors for Firefox */
     color: white;
 }
-.filter-content::-webkit-scrollbar,.tab::-webkit-scrollbar{
+.filter-content::-webkit-scrollbar,.tab::-webkit-scrollbar {
     width: 0.3rem;
     height: 0.3rem;
 }
 .filter-content::-webkit-scrollbar{
     margin-left: 50px;
 }
-.filter-content::-webkit-scrollbar-thumb , .tab::-webkit-scrollbar-thumb{
-    border-radius: .7rem;
-    background-color: rgba(255, 255, 255, 0.267);
+.filter-content::-webkit-scrollbar-thumb , .tab::-webkit-scrollbar-thumb {
+    background-color: #f6f5f5; /* Color of the scrollbar thumb */
+    border-radius: 10px; /* Rounded scrollbar thumb */
     visibility: hidden;
 }
 
